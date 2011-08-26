@@ -15,8 +15,14 @@
                 android:resource="@xml/widget" />
 	    </receiver>
 	    <service android:name="TionzService" android:enabled="true">
+	    	<intent-filter>
+				<action android:name="com.aiiiizu.tionz.twitter" />
+				<action android:name="com.aiiiizu.tionz.facebook" />
+			</intent-filter>
 	    </service>
+	    <activity android:name="TwitterLoginActivity"></activity>
+	    <activity android:name="FacebookLoginActivity"></activity>
     </application>
 
-
+	<uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
