@@ -1,5 +1,7 @@
 package com.aiiiizu.tionz;
 
+import com.aiiiizu.tionz.common.SystemConstants;
+
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
@@ -21,7 +23,9 @@ public class MainActivity extends AppWidgetProvider {
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 
 		// サービスの登録、このサービスで更新処理をする。
-		context.startService(new Intent(context, TionzService.class));
+		Intent intent = new Intent(context, TionzService.class);
+		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_WIDGET);
+		context.startService(intent);
 	}
 
 	@Override

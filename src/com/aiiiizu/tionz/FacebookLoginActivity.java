@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.aiiiizu.tionz.common.SystemConstants;
 import com.aiiiizu.tionz.sns.facebook.FacebookConstants;
 import com.facebook.android.DialogError;
 import com.facebook.android.Facebook;
@@ -24,8 +25,9 @@ public class FacebookLoginActivity extends Activity {
 	// Fields
 	/** Facebook認証オブジェクト */
 	private Facebook facebook = new Facebook(FacebookConstants.APP_ID);
+
 	/** Facebookパーミッション情報 */
-	private String[] permissions = { FacebookConstants.PERM_PUBLIC_STREAM };
+	private String[] permissions = { FacebookConstants.PERM_PUBLIC_STREAM, FacebookConstants.PERM_OFFLINE_ACCESS };
 
 	// ==================================================
 	// Methods
@@ -37,14 +39,14 @@ public class FacebookLoginActivity extends Activity {
 		// --------------------------------------------------
 		// 本Activityに対応するレイアウトを設定
 		setContentView(R.layout.login);
-		
+
 		// --------------------------------------------------
 		// 認証処理の実施
 		this.facebook.authorize(this, this.permissions, new DialogListener() {
 			@Override
 			public void onComplete(Bundle values) {
 				Log.d("TionzWidget", "Facebook::onComplete");
-				
+
 				// --------------------------------------------------
 				// Facebook関連の永続化情報を格納
 				SharedPreferences pref = getSharedPreferences(FacebookConstants.PREF_KEY, MODE_PRIVATE);
@@ -52,11 +54,11 @@ public class FacebookLoginActivity extends Activity {
 				editor.putLong(FacebookConstants.SUB_KEY_ACCESS_TOKEN_EXPIRES, facebook.getAccessExpires());
 				editor.putString(FacebookConstants.SUB_KEY_ACCESS_TOKEN, facebook.getAccessToken());
 				editor.commit();
-				
+
 				// --------------------------------------------------
-				// フィード書き込み
-				write();
-				
+				// サービスの再起動
+				startService();
+
 				finish();
 			}
 
@@ -87,9 +89,13 @@ public class FacebookLoginActivity extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		this.facebook.authorizeCallback(requestCode, resultCode, data);
 	}
-	
-	private void write() {
-		Log.d("TionzWidget", "Facebook::write");
-//		this.facebook.request(parameters);
+
+	// ==================================================
+	// Private Methods
+	private void startService() {
+		Intent intent = new Intent(this, TionzService.class);
+		intent.setAction(SystemConstants.ACTION_FACEBOOK);
+		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_FACEBOOK);
+		this.startService(intent);
 	}
 }

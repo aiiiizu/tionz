@@ -38,4 +38,14 @@ public class SystemConstants {
 	public static final String PREF_KEY = "tionz_setting";
 	/** 永続化サブ参照キー：端末温度 */
 	public static final String SUB_KEY_TEMPERATURE = "temperature";
+	
+	// --------------------------------------------------
+	// インテント情報
+	public static final String INTENT_KEY_ACTIVATOR = "activator";
+	
+	// --------------------------------------------------
+	// サービ起動元情報
+	public static final String ACTIVATOR_WIDGET = "activator_widget";
+	public static final String ACTIVATOR_TWITTER = "activator_twitter";
+	public static final String ACTIVATOR_FACEBOOK = "activator_facebook";
 }

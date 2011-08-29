@@ -16,6 +16,7 @@ import android.widget.RemoteViews;
 import com.aiiiizu.tionz.common.SystemConstants;
 import com.aiiiizu.tionz.sns.AbstractSNSWriter;
 import com.aiiiizu.tionz.sns.SNSWriterFactory;
+import com.aiiiizu.utils.StringUtils;
 
 public class TionzService extends Service {
 
@@ -25,6 +26,14 @@ public class TionzService extends Service {
 	public void onStart(Intent intent, int startId) {
 		super.onStart(intent, startId);
 		Log.d("TionzWidget", "TionzService::onStart");
+
+		// --------------------------------------------------
+		// サービス起動元の情報を取得
+		String activator = intent.getStringExtra(SystemConstants.INTENT_KEY_ACTIVATOR);
+		if (StringUtils.isNullOrEmpty(activator)) {
+			activator = SystemConstants.ACTIVATOR_WIDGET;
+		}
+		Log.d("TionzWidget", "TionzService::Activator = " + activator);
 
 		// --------------------------------------------------
 		// ウィジェットのレイアウト情報をリモートビューに設定
@@ -37,13 +46,13 @@ public class TionzService extends Service {
 		AbstractSNSWriter writer = SNSWriterFactory.create(this, intent);
 		if (writer != null) {
 			// 対象アクション名に対応するSNSWriterが存在する場合
-			
+
 			// --------------------------------------------------
 			// Tionz永続化情報から端末温度情報を取得し、SNSに書き込む内容を設定
 			SharedPreferences pref = this.getSharedPreferences(SystemConstants.PREF_KEY, MODE_PRIVATE);
 			String temperature = pref.getString(SystemConstants.SUB_KEY_TEMPERATURE, SystemConstants.EMPTY);
 			String content = MessageFormat.format(SystemConstants.TEMP_CONTENT, temperature);
-			
+
 			// --------------------------------------------------
 			// 対象SNSへ書き込み
 			writer.write(content);

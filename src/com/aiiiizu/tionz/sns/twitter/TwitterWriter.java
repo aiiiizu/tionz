@@ -67,7 +67,7 @@ public class TwitterWriter extends AbstractSNSWriter {
 				// --------------------------------------------------
 				// デバッグ用(リリース時はコメントアウト)
 				// Twitterからの接続を切断
-				this.unconnectTwitter(pref.edit());
+				//this.unconnectTwitter(pref.edit());
 			}
 		} else {
 			// 未接続の場合
@@ -104,16 +104,16 @@ public class TwitterWriter extends AbstractSNSWriter {
 		this.service.startActivity(intent);
 	}
 
-	/**
-	 * Twitterからの接続を切断します。
-	 * 
-	 * @param editor Twitter関連の永続化情報エディター
-	 */
-	private void unconnectTwitter(SharedPreferences.Editor editor) {
-		// --------------------------------------------------
-		// OAuth認証情報を削除
-		editor.remove(TwitterConstants.SUB_KEY_OAUTH_TOKEN);
-		editor.remove(TwitterConstants.SUB_KEY_OAUTH_TOKEN_SECRET);
-		editor.commit();
-	}
+	// /**
+	// * Twitterからの接続を切断します。
+	// *
+	// * @param editor Twitter関連の永続化情報エディター
+	// */
+	// private void unconnectTwitter(SharedPreferences.Editor editor) {
+	// // --------------------------------------------------
+	// // OAuth認証情報を削除
+	// editor.remove(TwitterConstants.SUB_KEY_OAUTH_TOKEN);
+	// editor.remove(TwitterConstants.SUB_KEY_OAUTH_TOKEN_SECRET);
+	// editor.commit();
+	// }
 }

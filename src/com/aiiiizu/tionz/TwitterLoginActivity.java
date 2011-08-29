@@ -5,6 +5,7 @@ import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -70,6 +71,15 @@ public class TwitterLoginActivity extends Activity {
 	}
 
 	// ==================================================
+	// Private Methods
+	private void startService() {
+		Intent intent = new Intent(this, TionzService.class);
+		intent.setAction(SystemConstants.ACTION_TWITTER);
+		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_TWITTER);
+		this.startService(intent);
+	}
+
+	// ==================================================
 	// Inner Classes
 	/**
 	 * <pre>
@@ -105,7 +115,7 @@ public class TwitterLoginActivity extends Activity {
 
 				// --------------------------------------------------
 				// つぶやく
-				if(!StringUtils.isNullOrEmpty(oauthVerifier)) {
+				if (!StringUtils.isNullOrEmpty(oauthVerifier)) {
 					// 認証立証情報が設定されている場合
 					this.tweet(oauthVerifier);
 				}
@@ -137,13 +147,8 @@ public class TwitterLoginActivity extends Activity {
 				editor.commit();
 
 				// --------------------------------------------------
-				// 認証済Tionz Twitterアプリ情報の作成
-				Twitter oauthTwitter = TionzTwitterFactory.createAuthenticated(accessToken.getToken(),
-						accessToken.getTokenSecret());
-
-				// --------------------------------------------------
-				// ツイート
-				oauthTwitter.updateStatus("自作アプリからのつぶやき");
+				// サービスの起動
+				startService();
 			} catch (TwitterException e) {
 				if (e.isCausedByNetworkIssue()) {
 					// --------------------------------------------------
