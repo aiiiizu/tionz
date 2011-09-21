@@ -3,6 +3,9 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:padding="1px"
+    android:layout_margin="10px"
+    android:background="#80ffffff"
     >
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:orientation="horizontal"
@@ -13,6 +16,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
 		    android:textSize="24sp"
+		    android:textColor="#000000" 
 		    android:gravity="left|bottom"
 		    android:text="@string/header"/>
 　　		<ImageButton
@@ -31,6 +35,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
 		    android:textSize="30sp"
+		    android:textColor="#000000" 
 		    android:gravity="right"
 		    android:text=""/>
 		<TextView
@@ -38,6 +43,7 @@
 		    android:layout_height="wrap_content"
 		    android:layout_weight="1"
 		    android:textSize="30sp"
+		    android:textColor="#000000" 
 		    android:gravity="left"
 		    android:text="@string/temperature"/>
 　　		<ImageButton
