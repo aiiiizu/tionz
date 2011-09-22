@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/setting_title">
+		<EditTextPreference
+			android:key="account_twitter_key"
+			android:title="@string/setting_account_twitter_label"
+			android:summary="@string/setting_account_twitter"
+			android:dialogTitle="@string/setting_account_twitter_dialogtitle" />
+		<EditTextPreference
+			android:key="account_facebook_key"
+			android:title="@string/setting_account_facebook_label"
+			android:summary="@string/setting_account_facebook"
+			android:dialogTitle="@string/setting_account_facebook_dialogtitle" />
+		<ListPreference
+			android:key="share_contents_key"
+			android:title="@string/share_contents_label"
+			android:summary="@string/share_contents"
+			android:dialogTitle="@string/share_contents_dialogtitle"
+			android:entries="@array/list_share_contents_label"
+			android:entryValues="@array/list_share_contents_value" />
+	</PreferenceCategory>
+	<PreferenceScreen
+	    android:key="about_key"
+	    android:title="@string/about_title_label"
+        android:summary="@string/about_title">
+    </PreferenceScreen>
+</PreferenceScreen>

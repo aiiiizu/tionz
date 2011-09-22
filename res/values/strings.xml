@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, MainActivity!</string>
+    <!-- system information -->
     <string name="app_name">Tionz</string>
+
+    <!-- widget information -->
     <string name="header">只今の温度</string>
     <string name="temperature">℃</string>
+
+    <!-- setting information-->
+    <string name="setting_title">Tionz基本設定</string>
+    <string name="setting_account_twitter_label">Twitterのアカウント設定</string>
+    <string name="setting_account_twitter">ここにはTwitterの今設定されている値を表示</string>
+    <string name="setting_account_twitter_dialogtitle">Twitterのアカウントを設定してください</string>
+    <string name="setting_account_facebook_label">Facebookのアカウント設定</string>
+    <string name="setting_account_facebook">Facebookのアカウント設定</string>
+    <string name="setting_account_facebook_dialogtitle">Facebookのアカウントを設定してください</string>
+    <string name="share_contents_label">つぶやきのフォーマットを選択</string>
+    <string name="share_contents">ここには今設定されているフォーマットを表示</string>
+    <string name="share_contents_dialogtitle">つぶやきのフォーマットを選択してください</string>
+    <string name="about_title_label">What Tions?</string>
+    <string name="about_title">このアプリケーションについて</string>
+
+    <!-- about information -->
+    <string name="about_title_header">このアプリについて</string>
+    <string name="change_title_header">変更履歴</string>
+    <string name="notice_title_header">注意</string>
+    <string name="use_title_header">使い方</string>
+    <string name="about_abstract">アプリについてほげほげ</string>
+    <string name="change_abstract">変更履歴についてほげほげ</string>
+    <string name="notice_abstract">注意についてほげほげ</string>
+    <string name="use_abstract">使い方についてほげほげ</string>
 </resources>

@@ -37,7 +37,7 @@ public class TionzService extends Service {
 
 		// --------------------------------------------------
 		// ウィジェットのレイアウト情報をリモートビューに設定
-		RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.main);
+		RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget);
 		// リモートビュー情報のセットアップ
 		this.setupRemoteViews(remoteViews);
 
@@ -78,7 +78,7 @@ public class TionzService extends Service {
 	// Private Methods
 	/**
 	 * RemoteViewsオブジェクトのセットアップを実施
-	 * 
+	 *
 	 * @param remoteViews
 	 */
 	private void setupRemoteViews(RemoteViews remoteViews) {
@@ -107,11 +107,11 @@ public class TionzService extends Service {
 
 	/**
 	 * ウィジェットの更新処理を実行します。
-	 * 
+	 *
 	 * @param remoteViews
 	 */
 	private void updateWidget(RemoteViews remoteViews) {
-		ComponentName thisWidget = new ComponentName(this, MainActivity.class);
+		ComponentName thisWidget = new ComponentName(this, WidgetActivity.class);
 		AppWidgetManager manager = AppWidgetManager.getInstance(this);
 		manager.updateAppWidget(thisWidget, remoteViews);
 	}

@@ -33,8 +33,8 @@ public class BatteryReceiver extends BroadcastReceiver {
 			// --------------------------------------------------
 			// ウィジェットの更新
 			AppWidgetManager appWidget = AppWidgetManager.getInstance(context);
-			ComponentName name = new ComponentName(context, MainActivity.class);
-			RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.main);
+			ComponentName name = new ComponentName(context, WidgetActivity.class);
+			RemoteViews remoteView = new RemoteViews(context.getPackageName(), R.layout.widget);
 			remoteView.setTextViewText(R.id.temp_id, tempStr);
 			appWidget.updateAppWidget(name, remoteView);
 		}
