@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ScrollView"  
+  android:layout_height="fill_parent"  
+  android:layout_width="fill_parent"> 
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="vertical"
   android:layout_width="match_parent"
-  android:layout_height="match_parent">
+  android:layout_height="wrap_content">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -71,7 +76,7 @@
             android:layout_height="wrap_content"
             android:padding="5px">
         <TextView
-            android:text="@string/change_abstract"
+            android:text="@string/change_abstract_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -107,9 +112,21 @@
             android:layout_height="wrap_content"
             android:padding="5px">
         <TextView
-            android:text="@string/notice_abstract"
+            android:text="@string/notice_abstract_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:text="@string/notice_abstract_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="@string/notice_abstract_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:text="@string/notice_abstract_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>           
         </LinearLayout>
     </LinearLayout>
 
@@ -141,11 +158,41 @@
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:padding="5px">
+            android:padding="7px">
         <TextView
-            android:text="@string/use_abstract"
+            android:text="@string/use_sub_title_header_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         </LinearLayout>
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5px">
+        <TextView
+            android:text="@string/use_abstract_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+  		<ImageView
+		    android:layout_width="160px"
+		    android:layout_height="260px"
+		    android:padding="2px"
+		    android:adjustViewBounds="true"
+		    android:scaleType="fitXY"
+		    android:src="@drawable/widget_1"/>
+        <TextView
+            android:text="@string/use_abstract_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+       <ImageView
+		    android:layout_width="160px"
+		    android:layout_height="260px"
+		    android:padding="2px"
+		    android:adjustViewBounds="true"
+		    android:scaleType="fitXY"
+		    android:src="@drawable/widget_1"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

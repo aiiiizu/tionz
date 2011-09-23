@@ -13,7 +13,7 @@
     <string name="setting_account_twitter">ここにはTwitterの今設定されている値を表示</string>
     <string name="setting_account_twitter_dialogtitle">Twitterのアカウントを設定してください</string>
     <string name="setting_account_facebook_label">Facebookのアカウント設定</string>
-    <string name="setting_account_facebook">Facebookのアカウント設定</string>
+    <string name="setting_account_facebook">ここにはFacebookの今設定されている値を表示</string>
     <string name="setting_account_facebook_dialogtitle">Facebookのアカウントを設定してください</string>
     <string name="share_contents_label">つぶやきのフォーマットを選択</string>
     <string name="share_contents">ここには今設定されているフォーマットを表示</string>
@@ -23,11 +23,22 @@
 
     <!-- about information -->
     <string name="about_title_header">このアプリについて</string>
+    <string name="about_abstract">このアプリは端末の温度を測定し、その結果をfacebook,twitterでつぶやくことができます。</string>
+    
     <string name="change_title_header">変更履歴</string>
+    <string name="change_abstract_1">ver.1.0.0 初版</string>
+    
     <string name="notice_title_header">注意</string>
+    <string name="notice_abstract_1">・実機での動作確認は、SC-02Bでしか行っていません。</string>
+    <string name="notice_abstract_2">・ウィジェットで表示される情報が100%正しいという保障はできません。あくまでも目安としてご使用ください。</string>
+    <string name="notice_abstract_3">・本アプリを利用してfacebookまたはtwitterにつぶやく場合、事前にそれぞれのアカウントを本アプリに設定しておく必要がありますので、あらかじめご了承ください。</string>
+    <string name="notice_abstract_4">・何らかの原因で動作しない場合、設定と異なる挙動をする場合は、お手数ですがウィジェットを一度破棄し、再配置してください。</string>
+    
+    
     <string name="use_title_header">使い方</string>
-    <string name="about_abstract">アプリについてほげほげ</string>
-    <string name="change_abstract">変更履歴についてほげほげ</string>
-    <string name="notice_abstract">注意についてほげほげ</string>
-    <string name="use_abstract">使い方についてほげほげ</string>
+    <string name="use_sub_title_header_1">ウィジェットの表示</string>
+    <string name="use_abstract_1">1. ホーム画面上を長押しして、「ホーム画面に追加」メニューを開き、「ウィジェット」を選択してください。</string>
+    <string name="use_abstract_2">2. 「ウィジェット」の中から、「Tionz」を選択します。</string>
+    
+    
 </resources>
