@@ -191,7 +191,7 @@
 		    android:padding="2px"
 		    android:adjustViewBounds="true"
 		    android:scaleType="fitXY"
-		    android:src="@drawable/widget_1"/>
+		    android:src="@drawable/widget_2"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

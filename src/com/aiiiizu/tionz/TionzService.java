@@ -40,7 +40,7 @@ public class TionzService extends Service {
 		RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget);
 		// リモートビュー情報のセットアップ
 		this.setupRemoteViews(remoteViews);
-
+		
 		// --------------------------------------------------
 		// 各ボタンに対するクリック処理
 		AbstractSNSWriter writer = SNSWriterFactory.create(this, intent);
@@ -102,6 +102,17 @@ public class TionzService extends Service {
 			PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
 			// クリックイベントの設定
 			remoteViews.setOnClickPendingIntent(R.id.like_btn, pendingIntent);
+		}
+
+		// --------------------------------------------------
+		// Tionz設定画面に対するクリックイベントの追加
+		if (true) {
+			// ボタンが押された時に発行されるインテントオブジェクトの生成
+			Intent intent = new Intent(this,SettingActivity.class);
+			// PendingIntentの設定
+			PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+			// クリックイベントの設定
+			remoteViews.setOnClickPendingIntent(R.id.temp_id, pendingIntent);
 		}
 	}
 

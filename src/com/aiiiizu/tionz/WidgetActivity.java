@@ -1,12 +1,12 @@
 package com.aiiiizu.tionz;
 
-import com.aiiiizu.tionz.common.SystemConstants;
-
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import com.aiiiizu.tionz.common.SystemConstants;
 
 public class WidgetActivity extends AppWidgetProvider {
 
@@ -45,5 +45,4 @@ public class WidgetActivity extends AppWidgetProvider {
 		Log.v("TionzWidget", "onReceive");
 		super.onReceive(context, intent);
 	}
-
 }
