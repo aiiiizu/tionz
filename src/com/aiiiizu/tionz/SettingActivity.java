@@ -8,29 +8,38 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 
 /**
- * Tionz設定アクティビティ
- *
  * @author naoto
  */
-public class SettingActivity extends PreferenceActivity{
+public class SettingActivity extends PreferenceActivity {
 
 	private PreferenceScreen _whatTionz;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.setting);
+	private PreferenceScreen _twitterAccount;
 
-        //What Tionz?への遷移
-        _whatTionz = (PreferenceScreen)findPreference("about_key");
-        _whatTionz.setOnPreferenceClickListener(new OnPreferenceClickListener(){
-            @Override
-            public boolean onPreferenceClick(Preference pref) {
-            	Intent nextActivity = new Intent(SettingActivity.this,AboutActivity.class);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		addPreferencesFromResource(R.xml.setting);
+
+		_whatTionz = (PreferenceScreen) findPreference("about_key");
+		_whatTionz.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference pref) {
+				Intent nextActivity = new Intent(SettingActivity.this, AboutActivity.class);
 				startActivity(nextActivity);
-            	return true;
-            }
-        });
-    }
+				return true;
+			}
+		});
+
+		_twitterAccount = (PreferenceScreen) this.findPreference("account_twitter_key");
+		_twitterAccount.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				Intent nextActivity = new Intent(SettingActivity.this, TwitterAccountActivity.class);
+				startActivity(nextActivity);
+				return true;
+			}
+		});
+	}
 
 }

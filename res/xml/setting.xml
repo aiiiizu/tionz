@@ -2,11 +2,11 @@
 <PreferenceScreen
 	xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory android:title="@string/setting_title">
-		<EditTextPreference
-			android:key="account_twitter_key"
-			android:title="@string/setting_account_twitter_label"
-			android:summary="@string/setting_account_twitter"
-			android:dialogTitle="@string/setting_account_twitter_dialogtitle" />
+		<PreferenceScreen
+	    	android:key="account_twitter_key"
+	    	android:title="@string/setting_account_twitter_label"
+        	android:summary="@string/setting_account_twitter">
+    	</PreferenceScreen>
 		<EditTextPreference
 			android:key="account_facebook_key"
 			android:title="@string/setting_account_facebook_label"

@@ -40,5 +40,12 @@
     <string name="use_abstract_1">1. ホーム画面上を長押しして、「ホーム画面に追加」メニューを開き、「ウィジェット」を選択してください。</string>
     <string name="use_abstract_2">2. 「ウィジェット」の中から、「Tionz」を選択します。</string>
     
+    <!-- twitter account infomation -->
+    <string name="twitter_account_title_header">Twitterアカウント設定</string>
+    <string name="twitter_account_user_title">ユーザー名</string>
+    <string name="twitter_user_name">未設定</string>
     
+    <string name="button_register">登録</string>
+    <string name="button_modify">変更</string>
+    <string name="button_clear">クリア</string>
 </resources>

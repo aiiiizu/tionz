@@ -40,4 +40,6 @@ public class TwitterConstants {
 	public static final String SUB_KEY_OAUTH_TOKEN = "oauth_token";
 	/** 永続化サブ参照キー：OAuthトークンシークレット */
 	public static final String SUB_KEY_OAUTH_TOKEN_SECRET = "oauth_token_secret";
+	/** 永続化サブ参照キー；ユーザー名 */
+	public static final String SUB_KEY_USER_NAME = "user_name";
 }

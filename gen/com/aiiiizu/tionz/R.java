@@ -18,22 +18,29 @@ public final class R {
         public static final int facebook=0x7f020000;
         public static final int facebook_icon=0x7f020001;
         public static final int icon=0x7f020002;
-        public static final int twitter=0x7f020003;
-        public static final int widget_1=0x7f020004;
-        public static final int widget_2=0x7f020005;
-        public static final int widget_background=0x7f020006;
+        public static final int like=0x7f020003;
+        public static final int tweet=0x7f020004;
+        public static final int twitter=0x7f020005;
+        public static final int widget_1=0x7f020006;
+        public static final int widget_2=0x7f020007;
+        public static final int widget_background=0x7f020008;
     }
     public static final class id {
         public static final int ScrollView=0x7f070000;
+        public static final int clear=0x7f070007;
         public static final int like_btn=0x7f070004;
         public static final int login=0x7f070001;
+        public static final int register=0x7f070006;
         public static final int temp_id=0x7f070003;
         public static final int tweet_btn=0x7f070002;
+        public static final int twitter_user_name=0x7f070005;
     }
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int login=0x7f030001;
-        public static final int widget=0x7f030002;
+        public static final int main=0x7f030002;
+        public static final int twitter_account=0x7f030003;
+        public static final int widget=0x7f030004;
     }
     public static final class string {
         public static final int about_abstract=0x7f060010;
@@ -45,6 +52,9 @@ public final class R {
         /**  system information 
          */
         public static final int app_name=0x7f060000;
+        public static final int button_clear=0x7f060021;
+        public static final int button_modify=0x7f060020;
+        public static final int button_register=0x7f06001f;
         public static final int change_abstract_1=0x7f060012;
         public static final int change_title_header=0x7f060011;
         /**  widget information 
@@ -68,6 +78,11 @@ public final class R {
         public static final int share_contents_dialogtitle=0x7f06000c;
         public static final int share_contents_label=0x7f06000a;
         public static final int temperature=0x7f060002;
+        /**  twitter account infomation 
+         */
+        public static final int twitter_account_title_header=0x7f06001c;
+        public static final int twitter_account_user_title=0x7f06001d;
+        public static final int twitter_user_name=0x7f06001e;
         public static final int use_abstract_1=0x7f06001a;
         public static final int use_abstract_2=0x7f06001b;
         public static final int use_sub_title_header_1=0x7f060019;

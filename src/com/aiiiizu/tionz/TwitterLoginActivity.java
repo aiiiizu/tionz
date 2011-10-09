@@ -3,9 +3,11 @@ package com.aiiiizu.tionz;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
+import twitter4j.auth.OAuthAuthorization;
 import twitter4j.auth.RequestToken;
+import twitter4j.conf.Configuration;
+import twitter4j.conf.ConfigurationContext;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,9 +31,9 @@ import com.aiiiizu.utils.StringUtils;
 public class TwitterLoginActivity extends Activity {
 	// ==================================================
 	// Fields
-	private Twitter twitter = null;
+	private static RequestToken req = null;
 
-	private RequestToken token = null;
+	private static OAuthAuthorization oauth = null;
 
 	// ==================================================
 	// Methods
@@ -56,27 +58,23 @@ public class TwitterLoginActivity extends Activity {
 
 		// --------------------------------------------------
 		// 未認証Tionz Twitterアプリ情報を作成
-		this.twitter = TionzTwitterFactory.createUnauthenticated();
+		// Twitetr4jの設定を読み込む
+		Configuration conf = ConfigurationContext.getInstance();
+		// Oauth認証オブジェクト作成
+		oauth = new OAuthAuthorization(conf);
+		// Oauth認証オブジェクトにconsumerKeyとconsumerSecretを設定
+		oauth.setOAuthConsumer(TwitterConstants.CONSUMER_KEY, TwitterConstants.CONSUMER_SECRET);
+		// アプリの認証オブジェクト作成
 		try {
-			// リクエストトークン（対象アプリへのアクセス許可）情報の作成
-			this.token = this.twitter.getOAuthRequestToken(TwitterConstants.CALLBACK_URL);
-		} catch (Exception e) {
-			Log.e("TionzWidget", e.getMessage());
+			req = oauth.getOAuthRequestToken(TwitterConstants.CALLBACK_URL);
+		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+		String uri = req.getAuthorizationURL();
 
 		// --------------------------------------------------
 		// WebViewに表示するURL情報を設定
-		webView.loadUrl(this.token.getAuthenticationURL());
-	}
-
-	// ==================================================
-	// Private Methods
-	private void startService() {
-		Intent intent = new Intent(this, TionzService.class);
-		intent.setAction(SystemConstants.ACTION_TWITTER);
-		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_TWITTER);
-		this.startService(intent);
+		webView.loadUrl(uri);
 	}
 
 	// ==================================================
@@ -114,10 +112,10 @@ public class TwitterLoginActivity extends Activity {
 				}
 
 				// --------------------------------------------------
-				// つぶやく
+				// 永続化情報の設定
 				if (!StringUtils.isNullOrEmpty(oauthVerifier)) {
 					// 認証立証情報が設定されている場合
-					this.tweet(oauthVerifier);
+					this.setting(oauthVerifier);
 				}
 
 				// --------------------------------------------------
@@ -129,26 +127,24 @@ public class TwitterLoginActivity extends Activity {
 		// ==================================================
 		// Private Methods
 		/**
-		 * ツイートします。
+		 * 認証情報を永続化情報に格納します。
 		 * 
 		 * @param oauthVerifier 認証立証文字列
 		 */
-		private void tweet(String oauthVerifier) {
+		private void setting(String oauthVerifier) {
 			AccessToken accessToken = null;
 			try {
 				// --------------------------------------------------
 				// Twitter関連の永続化情報のOAuth情報を格納
-				accessToken = twitter.getOAuthAccessToken(oauthVerifier);
+				accessToken = oauth.getOAuthAccessToken(req, oauthVerifier);
 				SharedPreferences pref = getSharedPreferences(TwitterConstants.PREF_KEY, MODE_PRIVATE);
 				SharedPreferences.Editor editor = pref.edit();
 				// 情報の格納
 				editor.putString(TwitterConstants.SUB_KEY_OAUTH_TOKEN, accessToken.getToken());
 				editor.putString(TwitterConstants.SUB_KEY_OAUTH_TOKEN_SECRET, accessToken.getTokenSecret());
+				Twitter twitter = TionzTwitterFactory.createAuthenticated(accessToken.getToken(), accessToken.getTokenSecret());
+				editor.putString(TwitterConstants.SUB_KEY_USER_NAME, twitter.getScreenName());
 				editor.commit();
-
-				// --------------------------------------------------
-				// サービスの起動
-				startService();
 			} catch (TwitterException e) {
 				if (e.isCausedByNetworkIssue()) {
 					// --------------------------------------------------
