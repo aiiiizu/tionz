@@ -39,6 +39,9 @@ public class FacebookConstants {
 
 	/** 永続化サブ参照キー：トークン立証 */
 	public static final String SUB_KEY_ACCESS_TOKEN_EXPIRES = "access_token_expires";
+	
+	/** 永続化サブ参照キー：ユーザー名 */
+	public static final String SUB_KEY_USER_NAME = "user_name";
 
 	// --------------------------------------------------
 	// パラメーター情報

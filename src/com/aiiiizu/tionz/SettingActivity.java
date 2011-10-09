@@ -16,6 +16,8 @@ public class SettingActivity extends PreferenceActivity {
 
 	private PreferenceScreen _twitterAccount;
 
+	private PreferenceScreen _facebookAccount;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -36,6 +38,16 @@ public class SettingActivity extends PreferenceActivity {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
 				Intent nextActivity = new Intent(SettingActivity.this, TwitterAccountActivity.class);
+				startActivity(nextActivity);
+				return true;
+			}
+		});
+
+		_facebookAccount = (PreferenceScreen) this.findPreference("account_facebook_key");
+		_facebookAccount.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+				Intent nextActivity = new Intent(SettingActivity.this, FacebookAccountActivity.class);
 				startActivity(nextActivity);
 				return true;
 			}

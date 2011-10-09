@@ -1,5 +1,11 @@
 package com.aiiiizu.tionz;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -53,11 +59,8 @@ public class FacebookLoginActivity extends Activity {
 				SharedPreferences.Editor editor = pref.edit();
 				editor.putLong(FacebookConstants.SUB_KEY_ACCESS_TOKEN_EXPIRES, facebook.getAccessExpires());
 				editor.putString(FacebookConstants.SUB_KEY_ACCESS_TOKEN, facebook.getAccessToken());
+				editor.putString(FacebookConstants.SUB_KEY_USER_NAME, getUserName());
 				editor.commit();
-
-				// --------------------------------------------------
-				// サービスの再起動
-				startService();
 
 				finish();
 			}
@@ -90,12 +93,18 @@ public class FacebookLoginActivity extends Activity {
 		this.facebook.authorizeCallback(requestCode, resultCode, data);
 	}
 
-	// ==================================================
-	// Private Methods
-	private void startService() {
-		Intent intent = new Intent(this, TionzService.class);
-		intent.setAction(SystemConstants.ACTION_FACEBOOK);
-		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_FACEBOOK);
-		this.startService(intent);
+	private String getUserName() {
+		try {
+			// ユーザー情報取得
+			String res = facebook.request("/me");
+			JSONObject jsonObject = new JSONObject(res);
+			return jsonObject.getString("name");
+		} catch (MalformedURLException e) {
+			return SystemConstants.EMPTY;
+		} catch (IOException e) {
+			return SystemConstants.EMPTY;
+		} catch (JSONException e) {
+			return SystemConstants.EMPTY;
+		}
 	}
 }

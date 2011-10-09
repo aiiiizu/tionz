@@ -7,11 +7,11 @@
 	    	android:title="@string/setting_account_twitter_label"
         	android:summary="@string/setting_account_twitter">
     	</PreferenceScreen>
-		<EditTextPreference
-			android:key="account_facebook_key"
-			android:title="@string/setting_account_facebook_label"
-			android:summary="@string/setting_account_facebook"
-			android:dialogTitle="@string/setting_account_facebook_dialogtitle" />
+    	<PreferenceScreen
+	    	android:key="account_facebook_key"
+	    	android:title="@string/setting_account_facebook_label"
+        	android:summary="@string/setting_account_facebook">
+    	</PreferenceScreen>
 		<ListPreference
 			android:key="share_contents_key"
 			android:title="@string/share_contents_label"

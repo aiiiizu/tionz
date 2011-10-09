@@ -4,12 +4,11 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 import android.app.Service;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
-import com.aiiiizu.tionz.FacebookLoginActivity;
 import com.aiiiizu.tionz.sns.AbstractSNSWriter;
 import com.facebook.android.Facebook;
 
@@ -45,15 +44,9 @@ public class FacebookWriter extends AbstractSNSWriter {
 			// --------------------------------------------------
 			// ウォール書き込み
 			this.writeWall(facebook, content);
-			// --------------------------------------------------
-			// デバック用
-			// facebookから切断
-			// this.unconnectFacebook(pref.edit());
 		} else {
 			Log.d("TionzWidget", "Facebook::Unconnect");
-			// --------------------------------------------------
-			// facebookへ接続
-			this.connectFacebook();
+			Toast.makeText(this.service, "Please Facebook User Setting", Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -79,27 +72,6 @@ public class FacebookWriter extends AbstractSNSWriter {
 			return false;
 		}
 	}
-
-	/**
-	 * facebookに接続します。
-	 */
-	private void connectFacebook() {
-		Intent intent = new Intent(this.service, FacebookLoginActivity.class);
-		// Activity以外からActivityを呼び出す場合に必ず必要な設定
-		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-		this.service.startActivity(intent);
-	}
-
-	// /**
-	// * facebookから切断します。
-	// *
-	// * @param editor facebook永続化情報
-	// */
-	// private void unconnectFacebook(SharedPreferences.Editor editor) {
-	// editor.remove(FacebookConstants.SUB_KEY_ACCESS_TOKEN);
-	// editor.remove(FacebookConstants.SUB_KEY_ACCESS_TOKEN_EXPIRES);
-	// editor.commit();
-	// }
 
 	/**
 	 * 自分自身のウォールに書き込みます。

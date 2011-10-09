@@ -45,7 +45,11 @@
     <string name="twitter_account_user_title">ユーザー名</string>
     <string name="twitter_user_name">未設定</string>
     
+    <!-- Facebook account infomation -->
+    <string name="facebook_account_title_header">Facebookアカウント設定</string>
+    <string name="facebook_account_user_title">ユーザー名</string>
+    <string name="facebook_user_name">未設定</string>
+    
     <string name="button_register">登録</string>
-    <string name="button_modify">変更</string>
     <string name="button_clear">クリア</string>
 </resources>
