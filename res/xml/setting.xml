@@ -18,7 +18,8 @@
 			android:summary="@string/share_contents"
 			android:dialogTitle="@string/share_contents_dialogtitle"
 			android:entries="@array/list_share_contents_label"
-			android:entryValues="@array/list_share_contents_value" />
+			android:entryValues="@array/list_share_contents_value"
+			android:defaultValue="現在{0}度です。" />
 	</PreferenceCategory>
 	<PreferenceScreen
 	    android:key="about_key"

@@ -6,8 +6,8 @@
         <item>現在#temp度です！！</item>
     </string-array>
     <string-array name="list_share_contents_value">
-        <item>現在#temp度です。</item>
-        <item>現在#temp度です！</item>
-        <item>現在#temp度です！！</item>
+        <item>現在{0}度です。</item>
+        <item>現在{0}度です！</item>
+        <item>現在{0}度です！！</item>
     </string-array>
 </resources>

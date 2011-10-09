@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -51,7 +52,10 @@ public class TionzService extends Service {
 			// Tionz永続化情報から端末温度情報を取得し、SNSに書き込む内容を設定
 			SharedPreferences pref = this.getSharedPreferences(SystemConstants.PREF_KEY, MODE_PRIVATE);
 			String temperature = pref.getString(SystemConstants.SUB_KEY_TEMPERATURE, SystemConstants.EMPTY);
-			String content = MessageFormat.format(SystemConstants.TEMP_CONTENT, temperature);
+			// つぶやく文言のフォーマット
+			SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+			String formatContent = sharedPreferences.getString("share_contents_key", SystemConstants.EMPTY);
+			String content = MessageFormat.format(formatContent, temperature);
 
 			// --------------------------------------------------
 			// 対象SNSへ書き込み
