@@ -7,7 +7,6 @@ import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
@@ -21,7 +20,18 @@ import com.aiiiizu.utils.StringUtils;
 
 public class TionzService extends Service {
 
-	BatteryReceiver mBatteryReceiver = new BatteryReceiver();
+	private BatteryReceiver mBatteryReceiver = null;
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		Log.d("TionzWidget", "TionzService::onCreate");
+
+		// --------------------------------------------------
+		// サービス開始時にバッテリ情報通知を登録する。
+		mBatteryReceiver = new BatteryReceiver(this);
+		mBatteryReceiver.startReceive();
+	}
 
 	@Override
 	public void onStart(Intent intent, int startId) {
@@ -41,7 +51,7 @@ public class TionzService extends Service {
 		RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.widget);
 		// リモートビュー情報のセットアップ
 		this.setupRemoteViews(remoteViews);
-		
+
 		// --------------------------------------------------
 		// 各ボタンに対するクリック処理
 		AbstractSNSWriter writer = SNSWriterFactory.create(this, intent);
@@ -63,14 +73,18 @@ public class TionzService extends Service {
 		}
 
 		// --------------------------------------------------
-		// バッテリー情報を取得するための設定
-		IntentFilter filter = new IntentFilter();
-		filter.addAction(Intent.ACTION_BATTERY_CHANGED);
-		registerReceiver(mBatteryReceiver, filter);
-
-		// --------------------------------------------------
 		// ウィジェットの更新
 		this.updateWidget(remoteViews);
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		Log.d("TionzWidget", "TionzService::onDestroy");
+
+		// --------------------------------------------------
+		// サービス終了時にはバッテリ情報通知を解除する。
+		mBatteryReceiver.finishReceive();
 	}
 
 	@Override

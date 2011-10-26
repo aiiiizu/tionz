@@ -12,37 +12,43 @@ public class WidgetActivity extends AppWidgetProvider {
 
 	@Override
 	public void onEnabled(Context context) {
-		Log.v("TionzWidget", "onEnabled");
+		Log.v("TionzWidget", "TionzWidget::onEnabled");
 		super.onEnabled(context);
 	}
 
 	@Override
-	public void onUpdate(Context context, AppWidgetManager appWidgetManager,
-			int[] appWidgetIds) {
-		Log.v("TionzWidget", "onUpdate");
+	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+		Log.v("TionzWidget", "TionzWidget::onUpdate");
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
 
-		// サービスの登録、このサービスで更新処理をする。
-		Intent intent = new Intent(context, TionzService.class);
+		// --------------------------------------------------
+		// サービスの登録。このサービスでウィジェット更新処理をする。
+		Intent intent = new Intent(context.getApplicationContext(), TionzService.class);
 		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_WIDGET);
 		context.startService(intent);
 	}
 
 	@Override
 	public void onDeleted(Context context, int[] appWidgetIds) {
-		Log.v("TionzWidget", "onDeleted");
+		Log.v("TionzWidget", "TionzWidget::onDeleted");
 		super.onDeleted(context, appWidgetIds);
 	}
 
 	@Override
 	public void onDisabled(Context context) {
-		Log.v("TionzWidget", "onDisabled");
+		Log.v("TionzWidget", "TionzWidget::onDisabled");
 		super.onDisabled(context);
+
+		// --------------------------------------------------
+		// サービスの停止。ウィジェットがすべて消されたらサービスも停止させる。
+		Intent intent = new Intent(context.getApplicationContext(), TionzService.class);
+		intent.putExtra(SystemConstants.INTENT_KEY_ACTIVATOR, SystemConstants.ACTIVATOR_WIDGET);
+		context.stopService(intent);
 	}
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Log.v("TionzWidget", "onReceive");
+//		Log.v("TionzWidget", "TionzWidget::onReceive");
 		super.onReceive(context, intent);
 	}
 }
