@@ -46,7 +46,7 @@ public class FacebookWriter extends AbstractSNSWriter {
 			this.writeWall(facebook, content);
 		} else {
 			Log.d("TionzWidget", "Facebook::Unconnect");
-			Toast.makeText(this.service, "Please Facebook User Setting", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this.service, "Facebook のアカウント設定がされていません", Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -86,10 +86,13 @@ public class FacebookWriter extends AbstractSNSWriter {
 			param.putString(FacebookConstants.PARAM_ACCESS_TOKEN, facebook.getAccessToken());
 			// フィードへの書き込み
 			facebook.request("/me/feed", param, "POST");
+			Toast.makeText(this.service, "Facebook に書き込みました", Toast.LENGTH_SHORT).show();
 		} catch (MalformedURLException e) {
 			Log.e("TionzWidget", e.getMessage());
+			Toast.makeText(this.service, "Facebook の書き込みに失敗しました", Toast.LENGTH_SHORT).show();
 		} catch (IOException e) {
 			Log.e("TionzWidget", e.getMessage());
+			Toast.makeText(this.service, "Facebook の書き込みに失敗しました", Toast.LENGTH_SHORT).show();
 		}
 	}
 }

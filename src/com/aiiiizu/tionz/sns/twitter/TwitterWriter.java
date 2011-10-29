@@ -50,22 +50,23 @@ public class TwitterWriter extends AbstractSNSWriter {
 				// --------------------------------------------------
 				// ツイート
 				twitter.updateStatus(content);
+				Toast.makeText(this.service, "Twitter につぶやきました", Toast.LENGTH_SHORT).show();
 			} catch (TwitterException e) {
 				if (e.isCausedByNetworkIssue()) {
 					// ネットワークが原因のエラーの場合
 					Log.e("TionzWidget", "Twitter::" + e.getMessage());
-					Toast.makeText(this.service, "Network Error", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this.service, "Twitter のつぶやきに失敗しました", Toast.LENGTH_SHORT).show();
 				} else {
 					// Twitter API制限によるエラーの場合
 					Log.e("TionzWidget", "Twitter::Twitter API Limitation");
-					Toast.makeText(this.service, "Twitter API Limitation", Toast.LENGTH_SHORT).show();
+					Toast.makeText(this.service, "Twitter のAPI制限のためつぶやけません", Toast.LENGTH_SHORT).show();
 				}
 				// e.printStackTrace();
 			}
 		} else {
 			// 未接続の場合
 			Log.d("TionzWidget", "Twitter::UnConnect");
-			Toast.makeText(this.service, "Please Twitter User Setting", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this.service, "Twitter のアカウント設定がされていません", Toast.LENGTH_SHORT).show();
 		}
 	}
 
