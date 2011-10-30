@@ -8,55 +8,60 @@
     android:background="@drawable/widget_background"
     >
     <!--     android:background="#80ffffff" -->
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:orientation="horizontal"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content">
-		<TextView
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-		    android:textSize="24sp"
-		    android:textColor="#000000"
-		    android:gravity="left|bottom"
-		    android:text="@string/header"/>
-		<ImageButton
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:gravity="left|bottom"
+        android:text="@string/header"/>
+    <ImageButton
             android:id="@+id/tweet_btn"
-		    android:layout_width="120px"
-		    android:layout_height="62px"
-		    android:padding="2px"
-		    android:adjustViewBounds="true"
-		    android:scaleType="fitXY"
-		    android:src="@drawable/twitter"/>
-	</LinearLayout>
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	    android:orientation="horizontal"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content">
-		<TextView
-			android:id="@+id/temp_id"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-		    android:textSize="30sp"
-		    android:textColor="#000000"
-		    android:gravity="right"
-		    android:text=""/>
-		<TextView
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-		    android:textSize="30sp"
-		    android:textColor="#000000"
-		    android:gravity="left"
-		    android:text="@string/temperature"/>
-		<ImageButton
+        android:layout_width="120px"
+        android:layout_height="62px"
+        android:padding="2px"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+            android:src="@drawable/img_twitter"
+            android:background="@null"/>
+  </LinearLayout>
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content">
+    <TextView
+      android:id="@+id/temp_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:gravity="right"
+        android:text=""/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:gravity="left"
+        android:text="@string/temperature"/>
+    <ImageButton
             android:id="@+id/like_btn"
-		    android:layout_width="120px"
-		    android:layout_height="62px"
-		    android:padding="2px"
-		    android:adjustViewBounds="true"
-		    android:scaleType="fitXY"
-		    android:src="@drawable/facebook"/>
-		</LinearLayout>
+        android:layout_width="120px"
+        android:layout_height="62px"
+        android:padding="2px"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+
+            android:src="@drawable/img_facebook"
+            android:background="@null"/>
+
+
+    </LinearLayout>
 </LinearLayout>
