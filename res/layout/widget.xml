@@ -27,7 +27,7 @@
         android:padding="2px"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-            android:src="@drawable/img_twitter"
+        android:src="@drawable/twitter/"
             android:background="@null"/>
   </LinearLayout>
   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -58,9 +58,7 @@
         android:padding="2px"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-
-            android:src="@drawable/img_facebook"
-            android:background="@null"/>
+        android:src="@drawable/facebook/"/>
 
 
     </LinearLayout>
